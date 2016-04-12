@@ -44,20 +44,19 @@ class CyclicRotation
         //var_dump($arrayCount);exit;
         $outputArray = array();
         foreach($arrayToRotate as $key => $value) {
-            $rotationTimes = $key + $rotation;
-            if($rotationTimes >= $arrayCount) {
+            $rotationTimes = $key + $rotation + 1;
+            if($rotationTimes > $arrayCount) {
                 $modulusKey = $rotationTimes % $rotation;
                 $outputArray[$modulusKey] = $value;
             }
             else {
-
-                $outputArray[$rotationTimes] = $value;
+                $outputArray[$rotationTimes - 1] = $value;
             }
 
         }
+        return $outputArray;
     }
 
 }
-
 $cyclicRotation = new CyclicRotation([3, 8, 9, 7, 6], 3);
-$cyclicRotation->rotateArray();
+var_dump($cyclicRotation->rotateArray());
