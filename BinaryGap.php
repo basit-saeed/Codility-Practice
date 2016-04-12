@@ -40,9 +40,12 @@ class BinaryGap
                 $counter = 0;
             }
         }
-        return max($binaryCount);
+        if(!empty($binaryCount))
+            return max($binaryCount);
+        else
+            return 0;
     }
 }
 
-$binaryGap = new BinaryGap(209);
+$binaryGap = new BinaryGap(1011);
 echo "The largest binary gap is " . $binaryGap->calculateBinaryGap() . "\n";
